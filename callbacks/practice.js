@@ -27,7 +27,9 @@
   Then invoke the callback function, passing in the first element in the array as it's argument.
 */
 
-// Code Here 
+function first(arr, cb) {
+  return cb(arr[0]);
+};// Code Here 
 
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
@@ -47,7 +49,9 @@ first(names, function(firstName){
   Then invoke the callback, passing in the last element in the array as the argument.
 */
 
-//Code Here
+function last(arr, cb) {
+  return cb(arr[arr.length - 1]);
+};//Code Here
 
 // Do not edit the code below.
 last(names, function(lastName){
@@ -65,7 +69,9 @@ last(names, function(lastName){
   Invoke the callback, passing in the product of the two numbers multiplied as the argument. 
 */
 
-//Code Here
+function multiply(num1, num2, cb) {
+  return cb(num1*num2);
+};//Code Here
 
 // Do not edit the code below.
 multiply(4, 3, function(answer){
@@ -84,7 +90,9 @@ multiply(4, 3, function(answer){
   If the name does not exist, invoke the callback with false as the argument.
 */
 
-//Code Here 
+function contains(arr, name, cb) {
+  return cb(arr.includes(name));
+};//Code Here 
 
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
@@ -105,14 +113,28 @@ contains(names, 'Colt', function(result){
   Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
 */
 
-//Code Here
+let uniq = (arr, cb) => {
+  let newArr = []
+  newArr = arr.filter((a, b) => arr.indexOf(a) === b)
+  cb(newArr)
+}
+// function uniq(arr, cb) {
+//   let instances = {};
+//   for (let i = 0; i < arr.length; i++) {
+//     if (instances[arr[i]]) {
+//       arr.splice(i, 1);
+//       console.log(arr);
+//     }
+//     instances[arr[i]] = true;
+//   }
+//   cb(arr);
+// };//Code Here
 
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
 });
 // Do not edit the code above.
-
 
 
 ////////// PROBLEM 6 //////////
@@ -122,7 +144,11 @@ uniq(names, function(uniqArr){
   For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
 */
 
-//Code Here 
+function each(names, cb) {
+  for (var i = 0; i < names.length; i++) {
+    cb(names[i], i);
+  }
+};//Code Here 
 
 // Do not edit the code below.
 each(names, function(item, indice){
@@ -139,7 +165,13 @@ each(names, function(item, indice){
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
-// Code here
+function getUserById(users, id, cb) {
+  for (var i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      cb(users[i]);
+    }
+  }
+};// Code here
 
 // Do not edit the code below.
 var users = [
